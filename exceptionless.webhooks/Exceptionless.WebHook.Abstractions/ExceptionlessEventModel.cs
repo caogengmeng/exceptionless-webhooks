@@ -1,10 +1,12 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace Exceptionless.WebHook.Abstractions
+namespace ExceptionLess.WebHook.Abstractions
 {
-    public class ExceptionlessEventModel
+    public class ExceptionLessEventModel
     {
+        public string Environment { get; set; }
+
         public string Id { get; set; }
         public string Url { get; set; }
 
@@ -12,11 +14,11 @@ namespace Exceptionless.WebHook.Abstractions
         public DateTime OccurrenceDate { get; set; }
 
         public string Type { get; set; }
+        public string Source { get; set; }
         public string Message { get; set; }
 
         [JsonProperty("project_id")]
         public string ProjectId { get; set; }
-
         [JsonProperty("project_Name")]
         public string ProjectName { get; set; }
 
