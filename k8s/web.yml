@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: geekbuying-light-addons
+  namespace: default
   name: exceptionless-api-weebhook
   labels:
     app: exceptionless-api-weebhook
