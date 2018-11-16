@@ -2,7 +2,7 @@
 一个 Exceptionless 相关 WebHooks 项目。
 
 # 流程
-当Exceptionless触发配置的WebHooks通知类型时，如Error、LogError，发送消息到 DingTalk（钉钉），以便实时知道线上程序运行情况。
+当Exceptionless触发配置的WebHooks通知类型时，如Error、LogError，发送消息到 DingTalk（钉钉），以便实时知晓线上程序运行情况。
 
 # 部署
 ## docker
