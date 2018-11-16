@@ -9,12 +9,12 @@
 
 # 步骤
 ## 1、部署
-   选择一种部署方式。
-   ### docker
+选择一种部署方式。
+### docker
 
-   ``` shell
-   docker run -d -p 8000:80 justmine/exceptionless.api.webhook:0.0.0
-   ```
+``` shell
+docker run -d -p 8000:80 justmine/exceptionless.api.webhook:0.0.0
+```
 
 ### kubernetes（推荐）
 
