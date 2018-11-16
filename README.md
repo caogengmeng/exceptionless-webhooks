@@ -7,22 +7,23 @@
 
 ![Image text](https://github.com/justmine66/exceptionless-webhooks/blob/master/result.png)
 
-# 部署
-## docker
+# 步骤
+## 1 部署
+### docker
 
 ``` shell
 docker run -d -p 8000:80 justmine/exceptionless.api.webhook:0.0.0
 ```
 
-## kubernetes（推荐）
+### kubernetes（推荐）
 
 [deployment.yml](https://github.com/justmine66/exceptionless-webhooks/blob/master/k8s/web.yml)
 
-# 配置
+## 2 配置
 
 请先部署好webhook钩子。
 
-## Exceptionless
+### Exceptionless
 
 Admin => Projects => Integrations => Add Web Hook：
 
