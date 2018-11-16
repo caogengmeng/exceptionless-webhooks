@@ -1,6 +1,6 @@
-﻿namespace Exceptionless.WebHook.DingTalk.Utilitys
+﻿namespace ExceptionLess.WebHook.DingTalk.Utilities
 {
-    public class StringUtilitys
+    public class StringUtility
     {
         public static string ToCamelCase(string str)
         {
