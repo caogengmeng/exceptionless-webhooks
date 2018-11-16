@@ -1,7 +1,6 @@
-# exceptionless-webhooks
 一个 Exceptionless 相关 WebHooks 项目。
 
-# 说明
+# 目的
 当Exceptionless触发配置的WebHooks通知类型时，如Error、LogError，发送消息到 DingTalk（钉钉），以便实时知道线上程序运行情况。
 
 # 部署
