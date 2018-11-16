@@ -20,6 +20,11 @@ docker run -d -p 8000:80 justmine/exceptionless.api.webhook:0.0.0
 
 [deployment.yml](https://github.com/justmine66/exceptionless-webhooks/blob/master/k8s/web.yml)
 
+``` shell
+kubectl apply -f https://github.com/justmine66/exceptionless-webhooks/blob/master/k8s/web.yml;
+或
+kubectl -n [指定的命名空间] apply -f https://github.com/justmine66/exceptionless-webhooks/blob/master/k8s/web.yml;
+```
 ## 2、配置
 
 请先部署好webhook钩子。
