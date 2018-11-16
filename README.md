@@ -30,6 +30,8 @@ Admin => Projects => Integrations => Add Web Hook：
 
 ![Image text](https://github.com/justmine66/exceptionless-webhooks/blob/master/config.png)
 
+>注意：如果你的项目Webhook配置选项没有Error、LogEroor类型，说明Exceptionless还没有合并我的PR，请先拉取我的项目：[后端](https://github.com/justmine66/Exceptionless)、[前端](https://github.com/justmine66/Exceptionless.UI)，前后端都需要拉取最新项目代码。
+
 # changes
 
 1. 添加容器化部署脚本，支持docker、kubernetes。
