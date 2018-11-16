@@ -1,8 +1,8 @@
 # exceptionless-webhooks
 一个 Exceptionless 相关 WebHooks 项目。
 
-# 流程
-当Exceptionless触发配置的WebHooks通知类型时，如Error、LogError，发送消息到 DingTalk（钉钉），以便实时知晓线上程序运行情况。
+# 说明
+当Exceptionless触发配置的WebHooks通知类型时，如Error、LogError，发送消息到 DingTalk（钉钉），以便实时知道线上程序运行情况。
 
 # 部署
 ## docker
@@ -35,6 +35,7 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
+
 ---
 apiVersion: v1
 kind: Service
@@ -53,6 +54,20 @@ spec:
   selector:
     app: exceptionless-api-weebhook
 ```
+
+# 配置
+
+请先部署好webhook钩子。
+
+## Exceptionless
+
+Admin => Projects => Integrations => Add Web Hook：
+
+
+
+# 效果图
+
+
 
 # changes
 
