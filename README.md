@@ -3,6 +3,10 @@
 # 目的
 当Exceptionless触发配置的WebHooks通知类型时，如Error、LogError，发送消息到 DingTalk（钉钉），以便实时知道线上程序运行情况。
 
+# 效果图
+
+![Image text](https://github.com/justmine66/exceptionless-webhooks/blob/master/result.png)
+
 # 部署
 ## docker
 
@@ -23,10 +27,6 @@ docker run -d -p 8000:80 justmine/exceptionless.api.webhook:0.0.0
 Admin => Projects => Integrations => Add Web Hook：
 
 ![Image text](https://github.com/justmine66/exceptionless-webhooks/blob/master/config.png)
-
-# 效果图
-
-![Image text](https://github.com/justmine66/exceptionless-webhooks/blob/master/result.png)
 
 # changes
 
