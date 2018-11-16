@@ -8,14 +8,14 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exceptionless.WebHook.Abstractions
+namespace ExceptionLess.WebHook.Abstractions
 {
     public class FileTemplateService : ISingletonDependency, IDisposable
     {
         #region Field
 
         private readonly IMemoryCache _memoryCache;
-        private readonly PhysicalFileProvider _physicalFileProvider;
+        private readonly PhysicalFileProvider _fileProvider;
 
         #endregion Field
 
@@ -24,7 +24,7 @@ namespace Exceptionless.WebHook.Abstractions
         public FileTemplateService(IMemoryCache memoryCache)
         {
             _memoryCache = memoryCache;
-            _physicalFileProvider = new PhysicalFileProvider(AppContext.BaseDirectory);
+            _fileProvider = new PhysicalFileProvider(AppContext.BaseDirectory);
         }
 
         #endregion Constructor
@@ -40,17 +40,17 @@ namespace Exceptionless.WebHook.Abstractions
             var properties = model.GetType().GetProperties();
             var builder = new StringBuilder(template);
 
-            var propertys = new Dictionary<string, string>();
+            var propCache = new Dictionary<string, string>();
             string GetPropertyValue(PropertyInfo property)
             {
-                if (propertys.TryGetValue(property.Name, out var value))
+                if (propCache.TryGetValue(property.Name, out var value))
                 {
                     return value;
                 }
 
                 value = property.GetValue(model)?.ToString();
 
-                propertys[property.Name] = value;
+                propCache[property.Name] = value;
 
                 return value;
             }
@@ -72,8 +72,8 @@ namespace Exceptionless.WebHook.Abstractions
         {
             return await _memoryCache.GetOrCreateAsync(templateFile, async entry =>
             {
-                entry.AddExpirationToken(_physicalFileProvider.Watch(templateFile));
-                var fileInfo = _physicalFileProvider.GetFileInfo(templateFile);
+                entry.AddExpirationToken(_fileProvider.Watch(templateFile));
+                var fileInfo = _fileProvider.GetFileInfo(templateFile);
                 if (!fileInfo.Exists)
                     return string.Empty;
 
@@ -92,7 +92,7 @@ namespace Exceptionless.WebHook.Abstractions
         public void Dispose()
         {
             _memoryCache?.Dispose();
-            _physicalFileProvider?.Dispose();
+            _fileProvider?.Dispose();
         }
 
         #endregion IDisposable

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Exceptionless.WebHook.DingTalk.Messages
+namespace ExceptionLess.WebHook.DingTalk.Messages
 {
     public class DingTalkResponseMessage
     {

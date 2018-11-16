@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Exceptionless.WebHook.Abstractions
+namespace ExceptionLess.WebHook.Abstractions
 {
     public interface IWebHookProvider : ISingletonDependency
     {
         string Name { get; }
 
-        Task ProcessAsync(ExceptionlessEventModel model, IDictionary<string, string> parameters);
+        Task ProcessAsync(ExceptionLessEventModel model, IDictionary<string, string> parameters);
     }
 }

@@ -1,4 +1,5 @@
-﻿using Exceptionless.WebHook.Abstractions;
+﻿using ExceptionLess.WebHook.Abstractions;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -10,23 +11,24 @@ using System.Threading.Tasks;
 
 namespace Web.Middleware
 {
-    public class ExceptionlessWebhookMiddleware
+    public class ExceptionLessWebhookMiddleware
     {
         #region Field
 
         private readonly RequestDelegate _next;
         private readonly IEnumerable<IWebHookProvider> _webHookProviders;
-        private readonly ILogger<ExceptionlessWebhookMiddleware> _logger;
+        private readonly ILogger<ExceptionLessWebhookMiddleware> _logger;
 
         #endregion Field
 
         #region Constructor
 
-        public ExceptionlessWebhookMiddleware(RequestDelegate next, IEnumerable<IWebHookProvider> webHookProviders, ILogger<ExceptionlessWebhookMiddleware> logger)
+        public ExceptionLessWebhookMiddleware(RequestDelegate next, IEnumerable<IWebHookProvider> webHookProviders, ILogger<ExceptionLessWebhookMiddleware> logger)
         {
             _next = next;
             _webHookProviders = webHookProviders;
             _logger = logger;
+
             if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"全部处理程序数量：{_webHookProviders.Count()}");
         }
@@ -54,9 +56,8 @@ namespace Web.Middleware
 
                 if (_logger.IsEnabled(LogLevel.Debug))
                     _logger.LogDebug($"接收到 Webhook 请求：{content}");
-
-                var model = JsonConvert.DeserializeObject<ExceptionlessEventModel>(content);
-
+               
+                var model = JsonConvert.DeserializeObject<ExceptionLessEventModel>(content);
                 var providers = GetProviders(request.Query);
 
                 var parameters = new Dictionary<string, string>(request.Query.ToDictionary(i => i.Key, i => i.Value.ToString()), StringComparer.OrdinalIgnoreCase);

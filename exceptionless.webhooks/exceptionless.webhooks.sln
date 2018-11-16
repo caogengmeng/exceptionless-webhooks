@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{0A3A9747-0A0D-47A6-AB91-6DC77670C710}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "Web\Web.csproj", "{0A3A9747-0A0D-47A6-AB91-6DC77670C710}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exceptionless.WebHook.Abstractions", "Exceptionless.WebHook.Abstractions\Exceptionless.WebHook.Abstractions.csproj", "{37702FD2-77F9-482F-A21E-B88A33AA2D40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExceptionLess.WebHook.Abstractions", "Exceptionless.WebHook.Abstractions\ExceptionLess.WebHook.Abstractions.csproj", "{37702FD2-77F9-482F-A21E-B88A33AA2D40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exceptionless.WebHook.DingTalk", "Exceptionless.WebHook.DingTalk\Exceptionless.WebHook.DingTalk.csproj", "{DDA628F0-EB63-4C34-A87D-C1296F5970DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExceptionLess.WebHook.DingTalk", "ExceptionLess.WebHook.DingTalk\ExceptionLess.WebHook.DingTalk.csproj", "{DDA628F0-EB63-4C34-A87D-C1296F5970DC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7024BD80-0B3D-4586-8B3E-452BDC0ED615}"
+	ProjectSection(SolutionItems) = preProject
+		..\build\CI.bat = ..\build\CI.bat
+		..\build\version.props = ..\build\version.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,5 +36,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {80D25D1F-798A-4CFF-9780-450723F9B0A4}
 	EndGlobalSection
 EndGlobal
