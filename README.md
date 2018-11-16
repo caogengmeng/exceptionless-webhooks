@@ -9,7 +9,7 @@ docker run -d -p 8000:80 justmine/exceptionless.api.webhook:0.0.0
 
 ## kubernetes（推荐）
 
-![deployment.yml](https://github.com/justmine66/exceptionless-webhooks/blob/master/k8s/web.yml)
+[deployment.yml](https://github.com/justmine66/exceptionless-webhooks/blob/master/k8s/web.yml)
 
 # 配置
 
