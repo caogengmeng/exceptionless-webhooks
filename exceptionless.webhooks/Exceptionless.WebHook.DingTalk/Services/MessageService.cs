@@ -1,5 +1,5 @@
-﻿using Exceptionless.WebHook.DingTalk.Messages;
-using Exceptionless.WebHook.DingTalk.Utilitys;
+﻿using ExceptionLess.WebHook.DingTalk.Messages;
+using ExceptionLess.WebHook.DingTalk.Utilities;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Rabbit.Extensions.DependencyInjection;
@@ -9,15 +9,17 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exceptionless.WebHook.DingTalk.Services
+namespace ExceptionLess.WebHook.DingTalk.Services
 {
     public class MessageService : ISingletonDependency
     {
         private readonly ILogger<MessageService> _logger;
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        public MessageService(ILogger<MessageService> logger)
+        public MessageService(ILogger<MessageService> logger, IHttpClientFactory httpClientFactory)
         {
             _logger = logger;
+            _httpClientFactory = httpClientFactory;
         }
 
         public async Task SendAsync(Uri url, DingTalkRequestMessage message)
@@ -25,7 +27,7 @@ namespace Exceptionless.WebHook.DingTalk.Services
             if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"准备向 {url} 发送数据");
 
-            var type = StringUtilitys.ToCamelCase(message.Type.ToString());
+            var type = StringUtility.ToCamelCase(message.Type.ToString());
             var data = new Dictionary<string, object>
             {
                 {"msgtype", type},
@@ -35,23 +37,20 @@ namespace Exceptionless.WebHook.DingTalk.Services
             var json = JsonConvert.SerializeObject(data);
 
             if (_logger.IsEnabled(LogLevel.Debug))
-                _logger.LogDebug($"send dingtalk json:{json}");
+                _logger.LogDebug($"send dingTalk json:{json}");
 
             string responseContent = null;
             try
             {
-                using (var client = new HttpClient())
-                {
-                    var result = await client.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json"));
-                    responseContent = await result.Content.ReadAsStringAsync();
+                var result = await _httpClientFactory.CreateClient().PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json"));
+                responseContent = await result.Content.ReadAsStringAsync();
 
-                    if (_logger.IsEnabled(LogLevel.Debug))
-                        _logger.LogDebug(responseContent);
+                if (_logger.IsEnabled(LogLevel.Debug))
+                    _logger.LogDebug(responseContent);
 
-                    var response = JsonConvert.DeserializeObject<DingTalkResponseMessage>(responseContent);
-                    if (response.ErrorCode > 0)
-                        _logger.LogError($"钉钉返回错误消息：{responseContent}");
-                }
+                var response = JsonConvert.DeserializeObject<DingTalkResponseMessage>(responseContent);
+                if (response.ErrorCode > 0)
+                    _logger.LogError($"钉钉返回错误消息：{responseContent}");
             }
             catch (Exception e)
             {
