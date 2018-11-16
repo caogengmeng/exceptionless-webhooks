@@ -8,7 +8,8 @@
 ![Image text](https://github.com/justmine66/exceptionless-webhooks/blob/master/result.png)
 
 # 步骤
-## 1 部署
+## 1、部署
+选择一种部署方式。
 ### docker
 
 ``` shell
@@ -19,7 +20,7 @@ docker run -d -p 8000:80 justmine/exceptionless.api.webhook:0.0.0
 
 [deployment.yml](https://github.com/justmine66/exceptionless-webhooks/blob/master/k8s/web.yml)
 
-## 2 配置
+## 2、配置
 
 请先部署好webhook钩子。
 
@@ -35,4 +36,4 @@ Admin => Projects => Integrations => Add Web Hook：
 2. 扩展事件模型，添加环境、来源等信息。
 3. 升级项目为netcoreapp2.1。
 4. 优化httpclient使用方式。
-5. 添加事件时间本地化设置。  
+5. 添加事件时间本地化设置。
