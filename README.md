@@ -44,3 +44,6 @@ Admin => Projects => Integrations => Add Web Hook：
 3. 升级项目为netcoreapp2.1。
 4. 优化httpclient使用方式。
 5. 添加事件时间本地化设置。
+
+# 如有疑惑，欢迎QQ。
+3538307147
