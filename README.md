@@ -1,7 +1,7 @@
 一个 Exceptionless 相关 WebHooks 项目。
 
 # 目的
-当Exceptionless触发配置的WebHooks通知类型时，如Error、LogError，发送消息到 DingTalk（钉钉），实时地知晓运维报警提醒。
+当Exceptionless触发配置的WebHooks通知类型时，如Error、LogError，发送消息到 DingTalk（钉钉），实时感知运维报警提醒。
 
 # 效果图
 
