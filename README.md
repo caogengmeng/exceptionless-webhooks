@@ -13,7 +13,7 @@
 ### docker
 
 ``` shell
-docker run -d -p 8000:80 justmine/exceptionless.api.webhook:0.0.0
+docker run -d -p 8000:80 justmine/exceptionless.api.webhook:0.0.0;
 ```
 
 ### kubernetes（推荐）
